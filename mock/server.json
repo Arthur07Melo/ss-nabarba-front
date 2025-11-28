@@ -1,0 +1,85 @@
+{
+    "establishment" : [
+        {
+            "id": "34d95b96-cdf5-469d-b330-38eb4ba60b44",
+            "name": "Example barber shop",
+            "description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade.",
+            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+        },
+        {
+            "id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
+            "name": "Menus Barber Place",
+            "description": "Menus Barber Place is a trendy barber shop offering stylish haircuts and grooming services",
+            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+        },
+        {
+            "id": "f1e2d3c4-b5a6-7890-abcd-ef0123456789",
+            "name": "City Gym",
+            "description": "Is a gym and a barbershop!",
+            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+        }
+    ],
+    "services-mock": [
+            {
+                "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+                "name": "Corte",
+                "description": "Cortezin de cabelo na régua pae",
+                "durationInMinutes": 30,
+                "price": 40.00,
+                "employees": [
+                    {
+                    "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+                    "name": "Josefino",
+                    "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+                    }
+                ]
+            },
+            {
+            "id": "e9bb3334-ad3b-4b70-bdca-97d83af527f6",
+            "name": "Barba",
+            "description": "lisinho lisinho pae",
+            "durationInMinutes": 15,
+            "price": 15.00,
+            "employees": [
+                {
+                "id": "b8c0d34e-8dad-4d90-a952-af9afd4bfdff",
+                "name": "Josefino",
+                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+                },
+                {
+                "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+                "name": "Josefino",
+                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+                }
+            ]
+            },
+            {
+            "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+            "name": "Corte e barba",
+            "description": "O melhor corte e barba da região",
+            "durationInMinutes": 45,
+            "price": 50.00,
+            "employees": [
+                {
+                "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+                "name": "Josefino",
+                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+                }
+            ]
+            },
+            {
+                "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+                "name": "Selagem capilar",
+                "description": "Uma maneira eficaz de tratar cabelos danificados, proporcionando brilho e maciez.",
+                "durationInMinutes": 60,
+                "price": 80.00,
+                "employees": [
+                    {
+                    "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+                    "name": "Josefino",
+                    "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+                    }
+                ]
+            }
+        ]
+}
