@@ -3,12 +3,14 @@
 import { serviceData } from "@/app/establishment/[id]/page"
 import { Button } from "@/components/ui/button"
 import { Clock, DollarSign } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 
 export function ServicesList({ services }: { services: serviceData[] }) {
-  const handleSchedule = (serviceName: string) => {
-    console.log(`Agendando: ${serviceName}`)
-    // TODO: Implementar navegação para página de agendamento
+  const router = useRouter()
+
+  const handleSchedule = (serviceId: string) => {
+    router.push(`/service/${serviceId}`)
   }
 
   return (
@@ -32,8 +34,8 @@ export function ServicesList({ services }: { services: serviceData[] }) {
                 </div>
               </div>
               <Button
-                onClick={() => handleSchedule(service.name)}
-                className="bg-slate-800 hover:bg-slate-700 text-yellow-500 font-semibold px-6 py-2 h-auto text-sm rounded-lg flex-shrink-0"
+                onClick={() => handleSchedule(service.id)}
+                className="bg-slate-800 hover:bg-slate-700 text-yellow-500 hover:cursor-pointer font-semibold px-6 py-2 h-auto text-sm rounded-lg flex-shrink-0"
               >
                 Agendar
               </Button>

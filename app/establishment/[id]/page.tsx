@@ -4,10 +4,9 @@ import { useEffect, useState } from "react"
 import { Header } from "@/components/ui/header"
 import { BarberInfo } from "@/components/barber/barber-info"
 import { ServicesList } from "@/components/barber/services-list"
-import { HeaderSkeleton } from "@/components/ui/header-skeleton"
 import { BarberInfoSkeleton } from "@/components/barber/barber-info-skeleton"
 import { ServicesListSkeleton } from "@/components/barber/services-list-skeleton"
-import { getEstablishment, getEstablishmentServices } from "@/http/establishment/EstablishmentApi"
+import { getEstablishmentServices } from "@/http/establishment/EstablishmentApi"
 import { useParams } from "next/navigation"
 
 export type establishmentData = {

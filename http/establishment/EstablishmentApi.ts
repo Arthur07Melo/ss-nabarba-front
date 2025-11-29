@@ -5,7 +5,19 @@ const getEstablishment = (establishmentId: string) => {
 }
 
 const getEstablishmentServices = (establishmentId: string) => {
-  return api.get(`/services-mock`);
+  return api.get(`/establishment-services-mock/${establishmentId}`);
 }
 
-export { getEstablishment, getEstablishmentServices };
+const getServiceDetails = (serviceId: string) => {
+  return api.get(`/detail-service-by-id-mock/${serviceId}`);
+}
+
+const getAvailableTimes = (professionalId: string, date: string) => {
+  return api.get(`/employee-available-times-mock/${professionalId}`, {
+    params: {
+      date: date
+    }
+  });
+}
+
+export { getServiceDetails, getEstablishmentServices, getAvailableTimes };
