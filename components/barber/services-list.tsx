@@ -35,7 +35,7 @@ export function ServicesList({ services }: { services: serviceData[] }) {
               </div>
               <Button
                 onClick={() => handleSchedule(service.id)}
-                className="bg-slate-800 hover:bg-slate-700 text-yellow-500 hover:cursor-pointer font-semibold px-6 py-2 h-auto text-sm rounded-lg flex-shrink-0"
+                className="bg-slate-800 hover:bg-slate-700 text-yellow-500 hover:cursor-pointer font-semibold px-6 py-2 h-auto text-sm rounded-lg shrink-0"
               >
                 Agendar
               </Button>

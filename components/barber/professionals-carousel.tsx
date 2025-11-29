@@ -79,7 +79,7 @@ export function ProfessionalsCarousel({ professionals, selected, onSelect }: Pro
           <button
             key={professional.id}
             onClick={() => onSelect(professional.id)}
-            className={`flex-shrink-0 flex flex-col items-center gap-3 pb-4 transition-all ${
+            className={`shrink-0 flex flex-col items-center gap-3 pb-4 transition-all ${
               selected === professional.id ? "opacity-100" : "opacity-70 hover:opacity-85"
             }`}
           >

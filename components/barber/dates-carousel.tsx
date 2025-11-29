@@ -68,7 +68,7 @@ export function DatesCarousel({ selected, onSelect }: DatesCarouselProps) {
           <button
             key={dateItem.key}
             onClick={() => onSelect(dateItem.key)}
-            className={`flex-shrink-0 flex flex-col hover:cursor-pointer items-center gap-1 p-3 rounded-lg border-2 transition-all w-20 ${
+            className={`shrink-0 flex flex-col hover:cursor-pointer items-center gap-1 p-3 rounded-lg border-2 transition-all w-20 ${
               selected === dateItem.key
                 ? "bg-slate-800 border-slate-800 text-white"
                 : "bg-gray-100 border-gray-300 text-gray-800 hover:border-gray-400"
