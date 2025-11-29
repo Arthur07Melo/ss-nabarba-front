@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
+import { toast } from "sonner"
 
 interface BookingConfirmationModalProps {
   isOpen: boolean
@@ -31,6 +32,13 @@ export function BookingConfirmationModal({
   time,
 }: BookingConfirmationModalProps) {
   if (!isOpen) return null
+
+  const handleConfirm = () => {
+    toast.success("Agendamento confirmado com sucesso!", {
+      description: `Você agendou o serviço de ${service.name} no dia ${date.split("-").reverse().join("/")} às ${time}.`
+    })
+    onClose()
+  }
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
@@ -93,7 +101,11 @@ export function BookingConfirmationModal({
           <Button variant="outline" className="flex-1 bg-transparent" onClick={onClose}>
             Cancelar
           </Button>
-          <Button className="flex-1 bg-slate-900 hover:bg-slate-800 text-white">Confirmar</Button>
+          <Button
+            className="flex-1 bg-slate-900 hover:bg-slate-800 text-white"
+            onClick={() => handleConfirm()}
+          >
+          Confirmar</Button>
         </div>
       </div>
     </div>
