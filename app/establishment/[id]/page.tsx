@@ -37,30 +37,39 @@ export default function Home() {
 
   const params = useParams<params>()
 
+  const updateEstablishmentData = (data: establishmentData) => {
+    setEstablishmentData(data)
+    setIsLoadingEstablishment(false)
+  }
+
+  const updateServicesData = (data: serviceData[]) => {
+    setServicesData(data)
+    setIsLoadingServices(false)
+  }
+
+
   useEffect(() => {
-    getEstablishment(params.id)
-      .then(response => {
-        const data = {
-          id: response.data.id,
-          name: response.data.name,
-          description: response.data.description,
-          imageUrl: response.data.imageUrl,
-        }
-        setEstablishmentData(data)
-        setIsLoadingEstablishment(false)
-      })
-  
     getEstablishmentServices(params.id)
       .then(response => {
-        const formattedServices = response.data.map((service: any) => ({
+        const servicesResponse = response.data.services;
+        const establishmentResponse = response.data.establishment;
+
+        const formattedEstablishment = {
+          id: establishmentResponse.id,
+          name: establishmentResponse.name,
+          description: establishmentResponse.description,
+          imageUrl: establishmentResponse.imageUrl
+        }
+
+        const formattedServices = servicesResponse.map((service: any) => ({
           id: service.id,
           name: service.name,
           duration: `${service.durationInMinutes}min`,
           price: service.price.toFixed(2),
         }))
 
-        setServicesData(formattedServices)
-        setIsLoadingServices(false)
+        updateEstablishmentData(formattedEstablishment)
+        updateServicesData(formattedServices)
       })
   }, [])
 
