@@ -12,6 +12,7 @@ import { BarberInfoSkeleton } from "@/components/barber/barber-info-skeleton"
 import { getAvailableTimes, getServiceDetails } from "@/http/establishment/EstablishmentApi"
 import { useParams } from "next/navigation"
 import { ProfessionalsCarouselSkeleton } from "@/components/barber/professionals-carousel-skeleton"
+import { BookingConfirmationModal } from "@/components/barber/booking-confirmation-modal"
 
 type params = {
   id: string
@@ -39,6 +40,10 @@ export default function BookingPage() {
   const [availableTimes, setAvailableTimes] = useState<string[] | null>(null)
   const [isLoadingAvailableTimes, setIsLoadingAvailableTimes] = useState(false)
   
+  const [selectedProfessionalData, setSelectedProfessionalData] = useState<employeeData | null>(null)
+
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false)
+
   const params = useParams<params>()
 
   const updateEstablishmentData = (data: establishmentData) => {
@@ -64,6 +69,12 @@ export default function BookingPage() {
         const timesResponse = response.data.availableTimes;
         updateAvailableTimes(timesResponse)
       })
+  }
+
+  const updateSelectedProfessionalData = (employee: employeeData) => {
+    const professional = employeesData?.find(emp => emp.id === employee.id) || null
+    setSelectedProfessional(employee.id)
+    setSelectedProfessionalData(professional)
   }
 
   useEffect(() => {
@@ -98,6 +109,7 @@ export default function BookingPage() {
         updateEstablishmentData(formattedEstablishment)
         setServiceData(formattedService)
         setSelectedProfessional(formattedEmployees[0]?.id || null)
+        setSelectedProfessionalData(formattedEmployees[0] || null)
       })
   }, [])
 
@@ -105,7 +117,6 @@ export default function BookingPage() {
     if (selectedProfessional && selectedDate) {
       getAndUpdateAvailableTimes(selectedProfessional, selectedDate)
     }
-
   }, [selectedProfessional, selectedDate])
 
 
@@ -130,7 +141,7 @@ export default function BookingPage() {
           <ProfessionalsCarousel
             professionals={employeesData!}
             selected={selectedProfessional}
-            onSelect={setSelectedProfessional}
+            onSelect={updateSelectedProfessionalData}
           />
         </section>}
 
@@ -153,9 +164,27 @@ export default function BookingPage() {
           <Button variant="outline" className="flex-1 bg-transparent p-8">
             Cancelar
           </Button>
-          <Button className="flex-1 bg-slate-900 hover:bg-slate-700 p-8">Confirmar Agendamento</Button>
+          <Button 
+            className="flex-1 bg-slate-900 hover:bg-slate-700 p-8"
+            onClick={() => setIsConfirmationModalOpen(true)}
+            disabled={!selectedProfessional || !selectedDate || !selectedTime}
+          >
+            Confirmar Agendamento
+          </Button>
         </div>
       </main>
+
+      {selectedProfessionalData && (
+        <BookingConfirmationModal
+          isOpen={isConfirmationModalOpen}
+          onClose={() => setIsConfirmationModalOpen(false)}
+          establishment={establishmentData!}
+          professional={selectedProfessionalData}
+          service={serviceData!}
+          date={selectedDate || ""}
+          time={selectedTime || ""}
+        />
+      )}
     </div>
   )
 }

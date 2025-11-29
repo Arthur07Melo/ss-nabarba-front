@@ -9,7 +9,7 @@ import { employeeData } from "@/app/service/[id]/page"
 interface ProfessionalsCarouselProps {
   professionals: employeeData[]
   selected: string | null
-  onSelect: (id: string) => void
+  onSelect: (professional: employeeData) => void
 }
 
 export function ProfessionalsCarousel({ professionals, selected, onSelect }: ProfessionalsCarouselProps) {
@@ -34,7 +34,7 @@ export function ProfessionalsCarousel({ professionals, selected, onSelect }: Pro
         {professionals.map((professional, index) => (
           <button
             key={professional.id}
-            onClick={() => onSelect(professional.id)}
+            onClick={() => onSelect(professional)}
             className={`flex flex-col hover:cursor-pointer items-center gap-3 pb-4 transition-all ${
               selected === professional.id ? "opacity-100" : "opacity-70 hover:opacity-85"
             }`}
@@ -78,7 +78,7 @@ export function ProfessionalsCarousel({ professionals, selected, onSelect }: Pro
         {professionals.map((professional, index) => (
           <button
             key={professional.id}
-            onClick={() => onSelect(professional.id)}
+            onClick={() => onSelect(professional)}
             className={`shrink-0 flex flex-col items-center gap-3 pb-4 transition-all ${
               selected === professional.id ? "opacity-100" : "opacity-70 hover:opacity-85"
             }`}
