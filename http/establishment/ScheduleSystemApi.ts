@@ -1,19 +1,16 @@
 import api from "../scheduleSystemApiConfig";
 
-const getEstablishment = (establishmentId: string) => {
-  return api.get(`/establishment/${establishmentId}`);
-}
 
 const getEstablishmentServices = (establishmentId: string) => {
-  return api.get(`/establishment-services-mock/${establishmentId}`);
+  return api.get(`/api/establishment/${establishmentId}`);
 }
 
 const getServiceDetails = (serviceId: string) => {
-  return api.get(`/detail-service-by-id-mock/${serviceId}`);
+  return api.get(`/api/service/${serviceId}`);
 }
 
 const getAvailableTimes = (professionalId: string, date: string) => {
-  return api.get(`/employee-available-times-mock/${professionalId}`, {
+  return api.get(`/api/employee/${professionalId}/available-times`, {
     params: {
       date: date
     }

@@ -6,7 +6,7 @@ import { BarberInfo } from "@/components/barber/barber-info"
 import { ServicesList } from "@/components/barber/services-list"
 import { BarberInfoSkeleton } from "@/components/barber/barber-info-skeleton"
 import { ServicesListSkeleton } from "@/components/barber/services-list-skeleton"
-import { getEstablishmentServices } from "@/http/establishment/EstablishmentApi"
+import { getEstablishmentServices } from "@/http/establishment/ScheduleSystemApi"
 import { useParams } from "next/navigation"
 
 export type establishmentData = {
