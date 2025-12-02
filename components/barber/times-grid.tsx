@@ -8,7 +8,6 @@ interface TimesGridProps {
 }
 
 export function TimesGrid({ times, selected, onSelect, isLoading }: TimesGridProps) {
-  console.log("TimesGrid times:", times);
 
   if (isLoading) {
     return (

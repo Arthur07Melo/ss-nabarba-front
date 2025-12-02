@@ -20,6 +20,7 @@ interface BookingConfirmationModalProps {
   }
   date: string
   time: string
+  onConfirm: () => void
 }
 
 export function BookingConfirmationModal({
@@ -30,14 +31,22 @@ export function BookingConfirmationModal({
   service,
   date,
   time,
+  onConfirm
 }: BookingConfirmationModalProps) {
   if (!isOpen) return null
 
-  const handleConfirm = () => {
-    toast.success("Agendamento confirmado com sucesso!", {
-      description: `Você agendou o serviço de ${service.name} no dia ${date.split("-").reverse().join("/")} às ${time}.`
-    })
-    onClose()
+  const handleConfirm = async () => {
+    try {
+      await onConfirm()
+      
+      toast.success("Agendamento confirmado com sucesso!", {
+        description: `Você agendou o serviço de ${service.name} no dia ${date.split("-").reverse().join("/")} às ${time}.`
+      })
+      onClose()
+    } 
+    catch (error) {
+      toast.error("Erro ao confirmar o agendamento. Por favor, tente novamente.")
+    }
   }
 
   return (

@@ -1,235 +1,301 @@
 {
-    "establishment" : [
+  "establishment": [
+    {
+      "id": "34d95b96-cdf5-469d-b330-38eb4ba60b44",
+      "name": "Example barber shop",
+      "description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade.",
+      "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+    },
+    {
+      "id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
+      "name": "Menus Barber Place",
+      "description": "Menus Barber Place is a trendy barber shop offering stylish haircuts and grooming services",
+      "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+    },
+    {
+      "id": "f1e2d3c4-b5a6-7890-abcd-ef0123456789",
+      "name": "City Gym",
+      "description": "Is a gym and a barbershop!",
+      "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+    }
+  ],
+  "services-mock": [
+    {
+      "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+      "name": "Corte",
+      "description": "Cortezin de cabelo na régua pae",
+      "durationInMinutes": 30,
+      "price": 40,
+      "employees": [
         {
-            "id": "34d95b96-cdf5-469d-b330-38eb4ba60b44",
-            "name": "Example barber shop",
-            "description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade.",
-            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
-        },
-        {
-            "id": "a1b2c3d4-e5f6-7890-abcd-ef0123456789",
-            "name": "Menus Barber Place",
-            "description": "Menus Barber Place is a trendy barber shop offering stylish haircuts and grooming services",
-            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
-        },
-        {
-            "id": "f1e2d3c4-b5a6-7890-abcd-ef0123456789",
-            "name": "City Gym",
-            "description": "Is a gym and a barbershop!",
-            "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg"
+          "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+          "name": "Josefino",
+          "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
         }
-    ],
-    "services-mock": [
+      ]
+    },
+    {
+      "id": "e9bb3334-ad3b-4b70-bdca-97d83af527f6",
+      "name": "Barba",
+      "description": "lisinho lisinho pae",
+      "durationInMinutes": 15,
+      "price": 15,
+      "employees": [
+        {
+          "id": "b8c0d34e-8dad-4d90-a952-af9afd4bfdff",
+          "name": "Josefino",
+          "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+        },
+        {
+          "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+          "name": "Josefino",
+          "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+        }
+      ]
+    },
+    {
+      "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+      "name": "Corte e barba",
+      "description": "O melhor corte e barba da região",
+      "durationInMinutes": 45,
+      "price": 50,
+      "employees": [
+        {
+          "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+          "name": "Josefino",
+          "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+        }
+      ]
+    },
+    {
+      "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+      "name": "Selagem capilar",
+      "description": "Uma maneira eficaz de tratar cabelos danificados, proporcionando brilho e maciez.",
+      "durationInMinutes": 60,
+      "price": 80,
+      "employees": [
+        {
+          "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+          "name": "Josefino",
+          "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+        }
+      ]
+    }
+  ],
+  "establishment-services-mock": [
+    {
+      "id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
+      "establishment": {
+        "id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
+        "name": "Example establishment",
+        "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg",
+        "description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade."
+      },
+      "services": [
+        {
+          "id": "6371eb79-469b-4139-84b8-597af4d8d48c",
+          "name": "Corte",
+          "description": "Na régua!!",
+          "durationInMinutes": 30,
+          "price": 35,
+          "employees": [
             {
-                "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
-                "name": "Corte",
-                "description": "Cortezin de cabelo na régua pae",
-                "durationInMinutes": 30,
-                "price": 40.00,
-                "employees": [
-                    {
-                    "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-                    "name": "Josefino",
-                    "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-                    }
-                ]
-            },
-            {
-            "id": "e9bb3334-ad3b-4b70-bdca-97d83af527f6",
-            "name": "Barba",
-            "description": "lisinho lisinho pae",
-            "durationInMinutes": 15,
-            "price": 15.00,
-            "employees": [
-                {
-                "id": "b8c0d34e-8dad-4d90-a952-af9afd4bfdff",
-                "name": "Josefino",
-                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-                },
-                {
-                "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-                "name": "Josefino",
-                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-                }
-            ]
-            },
-            {
-            "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
-            "name": "Corte e barba",
-            "description": "O melhor corte e barba da região",
-            "durationInMinutes": 45,
-            "price": 50.00,
-            "employees": [
-                {
-                "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-                "name": "Josefino",
-                "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-                }
-            ]
-            },
-            {
-                "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
-                "name": "Selagem capilar",
-                "description": "Uma maneira eficaz de tratar cabelos danificados, proporcionando brilho e maciez.",
-                "durationInMinutes": 60,
-                "price": 80.00,
-                "employees": [
-                    {
-                    "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-                    "name": "Josefino",
-                    "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-                    }
-                ]
+              "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
+              "name": "Josefino",
+              "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
             }
-        ],
-        "establishment-services-mock": [
-        	{
-        		"id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
-        		"establishment": {
-					"id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
-					"name": "Example establishment",
-					"imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg",
-					"description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade."
-				},
-				"services": [
-					{
-							"id": "6371eb79-469b-4139-84b8-597af4d8d48c",
-							"name": "Corte",
-							"description": "Na régua!!",
-							"durationInMinutes": 30,
-							"price": 35.00,
-							"employees": [
-								{
-									"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
-									"name": "Josefino",
-									"imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-								}
-							]
-					},
-					{
-							"id": "e9bb3334-ad3b-4b70-bdca-97d83af527f6",
-							"name": "Barba",
-							"description": "lisinho lisinho pae",
-							"durationInMinutes": 15,
-							"price": 15.00,
-							"employees": [
-							{
-							"id": "b8c0d34e-8dad-4d90-a952-af9afd4bfdff",
-							"name": "Josefino",
-							"imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-							},
-							{
-							"id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-							"name": "Josefino",
-							"imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-							}
-							]
-							},
-							{
-							"id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
-							"name": "Corte e barba",
-							"description": "O melhor corte e barba da região",
-							"durationInMinutes": 45,
-							"price": 50.00,
-							"employees": [
-							{
-							"id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-							"name": "Josefino",
-							"imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-							}
-							]
-							},
-							{
-							"id": "8915a1c8-fe96-44bf-af23-321be80a1b26",
-							"name": "Selagem capilar",
-							"description": "Uma maneira eficaz de tratar cabelos danificados, proporcionando brilho e maciez.",
-							"durationInMinutes": 60,
-							"price": 80.00,
-							"employees": [
-								{
-								"id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
-								"name": "Josefino",
-								"imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
-								}
-						]
-					}
-				]
-			}
-	],
-        "detail-service-by-id-mock": [
-        	{
-			"id": "6371eb79-469b-4139-84b8-597af4d8d48c",
-			"establishment": {
-				"id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
-				"name": "Example establishment",
-				"imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg",
-				"description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade."
-			},
-			"service": {
-				"id": "6371eb79-469b-4139-84b8-597af4d8d48c",
-				"name": "Corte",
-				"description": "Na régua!!",
-				"durationInMinutes": 30,
-				"price": 35.00,
-				"employees": [
-					{
-						"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
-						"name": "José",
-						"imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
-					},
-					{
-						"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
-						"name": "Júlio",
-						"imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
-					},
-					{
-						"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
-						"name": "Lucas",
-						"imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop"
-					}
-				]
-			}
-        	}
-        ],
-		"employee-available-times-mock": [
-			{
-				"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
-				"date": "2024-07-01",
-				"availableTimes": [
-					"09:00",
-					"09:30",
-					"10:00",
-					"11:45",
-					"14:00",
-					"15:00"
-				]
-			},
-			{
-				"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
-				"date": "2024-07-01",
-				"availableTimes": [
-					"14:00",
-					"15:00",
-					"16:00"
-				]
-			},
-			{
-				"id": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
-				"date": "2024-07-01",
-				"availableTimes": [
-					"08:00",
-					"08:30",
-					"08:45",
-					"09:00",
-					"09:15",
-					"09:30",
-					"09:45",
-					"10:00",
-					"10:15",
-					"10:30",
-					"10:45",
-					"11:00"
-				]
-			}
-		]
+          ]
+        },
+        {
+          "id": "e9bb3334-ad3b-4b70-bdca-97d83af527f6",
+          "name": "Barba",
+          "description": "lisinho lisinho pae",
+          "durationInMinutes": 15,
+          "price": 15,
+          "employees": [
+            {
+              "id": "b8c0d34e-8dad-4d90-a952-af9afd4bfdff",
+              "name": "Josefino",
+              "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+            },
+            {
+              "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+              "name": "Josefino",
+              "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+            }
+          ]
+        },
+        {
+          "id": "8915a1c8-fe96-44bf-af23-321be80a1b25",
+          "name": "Corte e barba",
+          "description": "O melhor corte e barba da região",
+          "durationInMinutes": 45,
+          "price": 50,
+          "employees": [
+            {
+              "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+              "name": "Josefino",
+              "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+            }
+          ]
+        },
+        {
+          "id": "8915a1c8-fe96-44bf-af23-321be80a1b26",
+          "name": "Selagem capilar",
+          "description": "Uma maneira eficaz de tratar cabelos danificados, proporcionando brilho e maciez.",
+          "durationInMinutes": 60,
+          "price": 80,
+          "employees": [
+            {
+              "id": "f2aebf51-3848-49b0-8397-ebe6229e0aa7",
+              "name": "Josefino",
+              "imageUrl": "https://randomuser.me/api/portraits/med/men/9.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "detail-service-by-id-mock": [
+    {
+      "id": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "establishment": {
+        "id": "04322857-9fb9-49cb-ba2d-f95973be33e4",
+        "name": "Example establishment",
+        "imageUrl": "https://static.vecteezy.com/system/resources/thumbnails/010/071/559/small/barbershop-logo-barber-shop-logo-template-vector.jpg",
+        "description": "Deixando todos em João Pessoa na régua desde 2020! Venha já para o melhor atendimento da cidade."
+      },
+      "service": {
+        "id": "6371eb79-469b-4139-84b8-597af4d8d48c",
+        "name": "Corte",
+        "description": "Na régua!!",
+        "durationInMinutes": 30,
+        "price": 35,
+        "employees": [
+          {
+            "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
+            "name": "José",
+            "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
+          },
+          {
+            "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
+            "name": "Júlio",
+            "imageUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+          },
+          {
+            "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+            "name": "Lucas",
+            "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop"
+          }
+        ]
+      }
+    }
+  ],
+  "employee-available-times-mock": [
+    {
+      "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
+      "date": "2024-07-01",
+      "availableTimes": [
+        "09:00",
+        "09:30",
+        "10:00",
+        "11:45",
+        "14:00",
+        "15:00"
+      ]
+    },
+    {
+      "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
+      "date": "2024-07-01",
+      "availableTimes": [
+        "14:00",
+        "15:00",
+        "16:00"
+      ]
+    },
+    {
+      "id": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "date": "2024-07-01",
+      "availableTimes": [
+        "08:00",
+        "08:30",
+        "08:45",
+        "09:00",
+        "09:15",
+        "09:30",
+        "09:45",
+        "10:00",
+        "10:15",
+        "10:30",
+        "10:45",
+        "11:00"
+      ]
+    }
+  ],
+  "appointments": [
+    {
+      "id": "9373",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "appointmentDate": "2025-12-06T09:00"
+    },
+    {
+      "id": "db35",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "appointmentDate": "2025-12-06T09:00"
+    },
+    {
+      "id": "782b",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
+      "appointmentDate": "2025-12-07T15:00"
+    },
+    {
+      "id": "b988",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b8",
+      "appointmentDate": "2025-12-07T14:00"
+    },
+    {
+      "id": "3d9c",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "appointmentDate": "2025-12-08T09:15"
+    },
+    {
+      "id": "50eb",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b9",
+      "appointmentDate": "2025-12-06T16:00"
+    },
+    {
+      "id": "aabe",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "appointmentDate": "2025-12-07T09:30"
+    },
+    {
+      "id": "a669",
+      "userPhone": "123456789",
+      "userName": "John Doe",
+      "serviceId": "6371eb79-469b-4139-84b8-597af4d8d48c",
+      "employeeId": "8566ab36-e656-4eae-83a1-7ed9a04da0b7",
+      "appointmentDate": "2025-12-08T10:45"
+    }
+  ]
 }

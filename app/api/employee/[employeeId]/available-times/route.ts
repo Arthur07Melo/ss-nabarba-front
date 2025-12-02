@@ -13,8 +13,6 @@ export async function GET(
   const { searchParams } = new URL(request.url);
   const date = searchParams.get('date');
 
-  console.log(employeeId)
-
   if (typeof employeeId !== 'string') {
     return NextResponse.json(
       { message: 'Invalid employee ID' },

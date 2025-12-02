@@ -1,15 +1,22 @@
 import api from "../scheduleSystemApiConfig";
 
+export type postAppointmentRequest = {
+  userPhone: string;
+  userName: string;
+  serviceId: string;
+  employeeId: string;
+  appointmentDate: string;
+}
 
-const getEstablishmentServices = (establishmentId: string) => {
+export const getEstablishmentServices = (establishmentId: string) => {
   return api.get(`/api/establishment/${establishmentId}`);
 }
 
-const getServiceDetails = (serviceId: string) => {
+export const getServiceDetails = (serviceId: string) => {
   return api.get(`/api/service/${serviceId}`);
 }
 
-const getAvailableTimes = (professionalId: string, date: string) => {
+export const getAvailableTimes = (professionalId: string, date: string) => {
   return api.get(`/api/employee/${professionalId}/available-times`, {
     params: {
       date: date
@@ -17,4 +24,6 @@ const getAvailableTimes = (professionalId: string, date: string) => {
   });
 }
 
-export { getServiceDetails, getEstablishmentServices, getAvailableTimes };
+export const postAppointment = (data: postAppointmentRequest) => {
+  return api.post(`/api/appointments`, data);
+}

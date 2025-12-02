@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { establishmentData, serviceData } from "@/app/establishment/[id]/page"
 import { BarberInfoSkeleton } from "@/components/barber/barber-info-skeleton"
-import { getAvailableTimes, getServiceDetails } from "@/http/establishment/ScheduleSystemApi"
+import { getAvailableTimes, getServiceDetails, postAppointment } from "@/http/establishment/ScheduleSystemApi"
 import { useParams } from "next/navigation"
 import { ProfessionalsCarouselSkeleton } from "@/components/barber/professionals-carousel-skeleton"
 import { BookingConfirmationModal } from "@/components/barber/booking-confirmation-modal"
@@ -75,6 +75,16 @@ export default function BookingPage() {
     const professional = employeesData?.find(emp => emp.id === employee.id) || null
     setSelectedProfessional(employee.id)
     setSelectedProfessionalData(professional)
+  }
+
+  const handleConfirmBooking = () => {
+    postAppointment({
+      userPhone: "123456789",
+      userName: "John Doe",
+      serviceId: serviceData!.id,
+      employeeId: selectedProfessionalData!.id,
+      appointmentDate: `${selectedDate}T${selectedTime}`
+    })
   }
 
   useEffect(() => {
@@ -183,6 +193,7 @@ export default function BookingPage() {
           service={serviceData!}
           date={selectedDate || ""}
           time={selectedTime || ""}
+          onConfirm={handleConfirmBooking}
         />
       )}
     </div>
