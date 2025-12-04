@@ -27,3 +27,19 @@ export const getAvailableTimes = (professionalId: string, date: string) => {
 export const postAppointment = (data: postAppointmentRequest) => {
   return api.post(`/api/appointments`, data);
 }
+
+export const getAppointments = (userPhone: string) => {
+  return api.get(`/api/appointments`, {
+    headers: {
+      'user-phone': userPhone
+    }
+  });
+}
+
+export const deleteAppointment = (appointmentId: string, userPhone: string) => {
+  return api.delete(`/api/appointments/${appointmentId}`, {
+    headers: {
+      'user-phone': userPhone
+    }
+  });
+}

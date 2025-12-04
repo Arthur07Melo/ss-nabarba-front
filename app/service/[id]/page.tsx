@@ -10,7 +10,7 @@ import { useEffect, useState } from "react"
 import { establishmentData, serviceData } from "@/app/establishment/[id]/page"
 import { BarberInfoSkeleton } from "@/components/barber/barber-info-skeleton"
 import { getAvailableTimes, getServiceDetails, postAppointment } from "@/http/establishment/ScheduleSystemApi"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { ProfessionalsCarouselSkeleton } from "@/components/barber/professionals-carousel-skeleton"
 import { BookingConfirmationModal } from "@/components/barber/booking-confirmation-modal"
 
@@ -25,6 +25,8 @@ export type employeeData = {
 }
 
 export default function BookingPage() {
+  const router = useRouter()
+
   const [selectedProfessional, setSelectedProfessional] = useState<string | null>(null)
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
   const [selectedTime, setSelectedTime] = useState<string | null>(null)

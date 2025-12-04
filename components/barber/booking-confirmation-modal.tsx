@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 
 interface BookingConfirmationModalProps {
@@ -35,6 +36,8 @@ export function BookingConfirmationModal({
 }: BookingConfirmationModalProps) {
   if (!isOpen) return null
 
+  const router = useRouter();
+
   const handleConfirm = async () => {
     try {
       await onConfirm()
@@ -42,7 +45,7 @@ export function BookingConfirmationModal({
       toast.success("Agendamento confirmado com sucesso!", {
         description: `Você agendou o serviço de ${service.name} no dia ${date.split("-").reverse().join("/")} às ${time}.`
       })
-      onClose()
+      router.push("/appointments")
     } 
     catch (error) {
       toast.error("Erro ao confirmar o agendamento. Por favor, tente novamente.")
