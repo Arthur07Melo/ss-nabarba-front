@@ -34,7 +34,7 @@ export function TimesGrid({ times, selected, onSelect, isLoading }: TimesGridPro
                 : "bg-gray-100 border-gray-300 text-gray-700 hover:border-gray-400 hover:bg-gray-50"
             }`}
           >
-            {time}
+            {time.slice(0, 5)}
           </button>
         ))}
       </div>

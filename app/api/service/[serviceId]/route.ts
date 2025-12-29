@@ -49,7 +49,9 @@ export async function GET(
   }
 
   try {
-    const serviceDetailsResponse = await api.get<serviceDetailsResponse>(`/detail-service-by-id-mock/${serviceId}`);
+    // const serviceDetailsResponse = await api.get<serviceDetailsResponse>(`/detail-service-by-id-mock/${serviceId}`);
+
+    const serviceDetailsResponse = await api.get<serviceDetailsResponse>(`/service/${serviceId}`);
 
     return NextResponse.json(serviceDetailsResponse.data);
   } catch (error) {

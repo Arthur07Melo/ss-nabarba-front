@@ -34,15 +34,13 @@ export async function GET(
   }
 
   try {
-    const establishmentServiceResponse = await api.get<establishmentServicesResponse>(`/establishment-services-mock/${establishmentId}`);
+    // const establishmentServiceResponse = await api.get<establishmentServicesResponse>(`/establishment-services-mock/${establishmentId}`);
 
-    // console.debug(`[Request: /api/establishment/${establishmentId}] Successfully fetched data`);
-    // console.debug(`[Request: /api/establishment/${establishmentId}] Response data: ${JSON.stringify(establishmentServiceResponse.data)}`);
+    const establishmentServiceResponse = await api.get<establishmentServicesResponse>(`/establishment/${establishmentId}/service`);
 
     return NextResponse.json(establishmentServiceResponse.data);
   } catch (error: any) {
-    // console.error(`[Request: /api/establishment/${establishmentId}] Error fetching data:`, error.message);
-    // console.error(`response body: ${JSON.stringify(error.response.data)}`);
+
     return NextResponse.json({ message: 'Failed to fetch establishment data' }, { status: 500 });
   }
 }

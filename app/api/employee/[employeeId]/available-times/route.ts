@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import api from '../../../../../bff/scheduleSystemApiConfig';
 
 type employeeAvailableTimesResponse = {
-  availableTimes: string[];
+  availableHours: string[];
 };
 
 export async function GET(
@@ -21,7 +21,11 @@ export async function GET(
   }
 
   try {
-    const serviceDetailsResponse = await api.get<employeeAvailableTimesResponse>(`/employee-available-times-mock/${employeeId}`, {
+    // const serviceDetailsResponse = await api.get<employeeAvailableTimesResponse>(`/employee-available-times-mock/${employeeId}`, {
+    //   params: { date },
+    // });
+
+    const serviceDetailsResponse = await api.get<employeeAvailableTimesResponse>(`/employee/${employeeId}/available-times`, {
       params: { date },
     });
 

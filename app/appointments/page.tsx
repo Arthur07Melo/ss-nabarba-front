@@ -6,6 +6,8 @@ import { BookingCard } from "@/components/barber/booking-card"
 import { BookingsListSkeleton } from "@/components/barber/booking-list-skeleton"
 import { AlertCircle } from "lucide-react"
 import { deleteAppointment, getAppointments } from "@/http/establishment/ScheduleSystemApi"
+import Cookies from "js-cookie"
+import { UserInfoModal } from "@/components/barber/user-info-modal"
 
 export type appointmentData = {
   id: string,
@@ -21,7 +23,6 @@ export type appointmentData = {
     imageUrl: string
   },
   appointmentDate: string
-  appointmentTime: string
 };
 
 
@@ -29,15 +30,22 @@ export default function MeusAgendamentosPage() {
   const [appointments, setAppointments] = useState<appointmentData[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
+  const [userName, setUserName] = useState<string | null>(null)
+  const [userPhone, setUserPhone] = useState<string | null>(null)
+
+  const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false)
+
   const handleCancel = (bookingId: string) => {
-    deleteAppointment(bookingId, "11999999999").then(() => {
-        setIsLoading(true)
-        fetchAndUpdateAppointments()
+    deleteAppointment(bookingId, userPhone!).then(() => {
+      setIsLoading(true)
+      fetchAndUpdateAppointments()
     })
   }
 
   const fetchAndUpdateAppointments = async () => {
-    const appointments = await getAppointments("11999999999")
+    const userPhone = Cookies.get("userPhone")
+
+    const appointments = await getAppointments(userPhone!)
     
     const appointmentData: appointmentData[] = appointments.data.data;
 
@@ -45,8 +53,7 @@ export default function MeusAgendamentosPage() {
         id: appointment.id,
         service: appointment.service,
         employee: appointment.employee,
-        appointmentDate: appointment.appointmentDate,
-        appointmentTime: appointment.appointmentTime
+        appointmentDate: appointment.appointmentDate
     }))
 
     setAppointments(formattedAppointments)
@@ -54,10 +61,29 @@ export default function MeusAgendamentosPage() {
   }
 
   useEffect(() => {
-    fetchAndUpdateAppointments()
+    const userName = Cookies.get("userName")
+
+    if (userName) {
+      setUserName(Cookies.get("userName")!)
+    } else {
+      setIsUserInfoModalOpen(true)
+      return
+    }
+
+    const userPhone = Cookies.get("userPhone")
+
+    if (userPhone) {
+      setUserPhone(Cookies.get("userPhone")!)
+    } else {
+      setIsUserInfoModalOpen(true)
+      return
+    }
+
+    fetchAndUpdateAppointments(userPhone!)
   }, [])
 
   return (
+    <>
     <div className="min-h-screen bg-gray-50">
       <Header />
 
@@ -83,5 +109,11 @@ export default function MeusAgendamentosPage() {
         )}
       </main>
     </div>
+
+    <UserInfoModal
+      isOpen={isUserInfoModalOpen}
+      onOpenChange={setIsUserInfoModalOpen}
+      handleSubmit={() => fetchAndUpdateAppointments()} />
+    </>
   )
 }

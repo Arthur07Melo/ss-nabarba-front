@@ -24,6 +24,16 @@ interface BookingCardProps {
 export function BookingCard({ appointment, onCancel }: BookingCardProps) {
   const [isAlertOpen, setIsAlertOpen] = useState(false)
 
+  const getTimeFromDate = (dateString: string) => {
+    const date = new Date(dateString)
+    return date.toLocaleTimeString("pt-BR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    })
+  }
+
+  const appointmentTime = getTimeFromDate(appointment.appointmentDate)
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString("pt-BR", {
@@ -72,7 +82,7 @@ export function BookingCard({ appointment, onCancel }: BookingCardProps) {
           </div>
 
           <div className="flex items-center gap-4 sm:flex-col">
-            <p className="text-xl font-bold text-slate-900">{appointment.appointmentTime}</p>
+            <p className="text-xl font-bold text-slate-900">{appointmentTime}</p>
             <Button
               variant="ghost"
               size="icon"
@@ -91,7 +101,7 @@ export function BookingCard({ appointment, onCancel }: BookingCardProps) {
             <AlertDialogTitle>Cancelar agendamento?</AlertDialogTitle>
             <AlertDialogDescription>
               Tem certeza que deseja cancelar o agendamento de {appointment.service.name} com {appointment.employee.name} em{" "}
-              {formatDate(appointment.appointmentDate)} às {appointment.appointmentTime}?
+              {formatDate(appointment.appointmentDate)} às {appointmentTime}?
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogCancel className="hover:bg-gray-100">Voltar</AlertDialogCancel>

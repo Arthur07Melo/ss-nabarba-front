@@ -13,6 +13,8 @@ import { getAvailableTimes, getServiceDetails, postAppointment } from "@/http/es
 import { useParams, useRouter } from "next/navigation"
 import { ProfessionalsCarouselSkeleton } from "@/components/barber/professionals-carousel-skeleton"
 import { BookingConfirmationModal } from "@/components/barber/booking-confirmation-modal"
+import Cookies from "js-cookie"
+import { UserInfoModal } from "@/components/barber/user-info-modal"
 
 type params = {
   id: string
@@ -46,6 +48,8 @@ export default function BookingPage() {
 
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false)
 
+  const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false)
+
   const params = useParams<params>()
 
   const updateEstablishmentData = (data: establishmentData) => {
@@ -68,7 +72,7 @@ export default function BookingPage() {
 
     getAvailableTimes(professionalId, date)
       .then(response => {
-        const timesResponse = response.data.availableTimes;
+        const timesResponse = response.data.availableHours;
         updateAvailableTimes(timesResponse)
       })
   }
@@ -79,10 +83,25 @@ export default function BookingPage() {
     setSelectedProfessionalData(professional)
   }
 
+  const confirmServiceBooking = () => {
+    const phone = Cookies.get("userPhone")
+    const name = Cookies.get("userName")
+
+    if (!phone || !name) {
+      setIsUserInfoModalOpen(true)
+      return
+    }
+
+    setIsConfirmationModalOpen(true)
+  }
+
   const handleConfirmBooking = () => {
+    const phone = Cookies.get("userPhone")
+    const name = Cookies.get("userName")
+
     postAppointment({
-      userPhone: "123456789",
-      userName: "John Doe",
+      userPhone: phone!,
+      userName: name!,
       serviceId: serviceData!.id,
       employeeId: selectedProfessionalData!.id,
       appointmentDate: `${selectedDate}T${selectedTime}`
@@ -133,71 +152,79 @@ export default function BookingPage() {
 
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
+    <>
+      <div className="min-h-screen bg-gray-50">
+        <Header />
 
-      <main className="max-w-2xl mx-auto px-4 py-8">
-      {isLoadingEstablishment ? <BarberInfoSkeleton /> : <BarberInfo establishmentData={establishmentData!} />}
+        <main className="max-w-2xl mx-auto px-4 py-8">
+        {isLoadingEstablishment ? <BarberInfoSkeleton /> : <BarberInfo establishmentData={establishmentData!} />}
 
-        {isLoadingEstablishment ? null :
-          <div className="mt-8 mb-8">
-          <p className="text-center text-lg font-semibold">
-            Serviço Selecionado: <span className="text-yellow-600">{serviceData?.name}</span>
-          </p>
-        </div>
-        }
+          {isLoadingEstablishment ? null :
+            <div className="mt-8 mb-8">
+            <p className="text-center text-lg font-semibold">
+              Serviço Selecionado: <span className="text-yellow-600">{serviceData?.name}</span>
+            </p>
+          </div>
+          }
 
-        {isLoadingEmployees ? <ProfessionalsCarouselSkeleton /> : 
-        <section className="mb-12">
-          <h2 className="text-center font-semibold text-gray-900 mb-6">Selecione o profissional:</h2>
-          <ProfessionalsCarousel
-            professionals={employeesData!}
-            selected={selectedProfessional}
-            onSelect={updateSelectedProfessionalData}
-          />
-        </section>}
-
-        <section className="mb-12">
-          <DatesCarousel selected={selectedDate} onSelect={setSelectedDate} />
-        </section>
-
-        {selectedProfessional && selectedDate &&
+          {isLoadingEmployees ? <ProfessionalsCarouselSkeleton /> : 
           <section className="mb-12">
-            <TimesGrid 
-              times={availableTimes ?? []}
-              selected={selectedTime}
-              onSelect={setSelectedTime}
-              isLoading={isLoadingAvailableTimes}
+            <h2 className="text-center font-semibold text-gray-900 mb-6">Selecione o profissional:</h2>
+            <ProfessionalsCarousel
+              professionals={employeesData!}
+              selected={selectedProfessional}
+              onSelect={updateSelectedProfessionalData}
             />
+          </section>}
+
+          <section className="mb-12">
+            <DatesCarousel selected={selectedDate} onSelect={setSelectedDate} />
           </section>
-        }
 
-        <div className="flex gap-4 mt-12">
-          <Button variant="outline" className="flex-1 bg-transparent p-8">
-            Cancelar
-          </Button>
-          <Button 
-            className="flex-1 bg-slate-900 hover:bg-slate-700 p-8"
-            onClick={() => setIsConfirmationModalOpen(true)}
-            disabled={!selectedProfessional || !selectedDate || !selectedTime}
-          >
-            Confirmar Agendamento
-          </Button>
-        </div>
-      </main>
+          {selectedProfessional && selectedDate &&
+            <section className="mb-12">
+              <TimesGrid 
+                times={availableTimes ?? []}
+                selected={selectedTime}
+                onSelect={setSelectedTime}
+                isLoading={isLoadingAvailableTimes}
+              />
+            </section>
+          }
 
-      {selectedProfessionalData && (
-        <BookingConfirmationModal
-          isOpen={isConfirmationModalOpen}
-          onClose={() => setIsConfirmationModalOpen(false)}
-          establishment={establishmentData!}
-          professional={selectedProfessionalData}
-          service={serviceData!}
-          date={selectedDate || ""}
-          time={selectedTime || ""}
-          onConfirm={handleConfirmBooking}
-        />
-      )}
-    </div>
+          <div className="flex gap-4 mt-12">
+            <Button variant="outline" className="flex-1 bg-transparent p-8">
+              Cancelar
+            </Button>
+            <Button 
+              className="flex-1 bg-slate-900 hover:bg-slate-700 p-8"
+              onClick={() => confirmServiceBooking()}
+              disabled={!selectedProfessional || !selectedDate || !selectedTime}
+            >
+              Confirmar Agendamento
+            </Button>
+          </div>
+        </main>
+
+        {selectedProfessionalData && (
+          <BookingConfirmationModal
+            isOpen={isConfirmationModalOpen}
+            onClose={() => setIsConfirmationModalOpen(false)}
+            establishment={establishmentData!}
+            professional={selectedProfessionalData}
+            service={serviceData!}
+            date={selectedDate || ""}
+            time={selectedTime || ""}
+            onConfirm={handleConfirmBooking}
+          />
+        )}
+      </div>
+
+      <UserInfoModal 
+        isOpen={isUserInfoModalOpen}
+        onOpenChange={setIsUserInfoModalOpen}
+        handleSubmit={() => {setIsConfirmationModalOpen(true)}} 
+      />
+    </>
   )
 }

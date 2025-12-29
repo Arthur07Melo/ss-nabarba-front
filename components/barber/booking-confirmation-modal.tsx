@@ -102,7 +102,7 @@ export function BookingConfirmationModal({
               <span className="text-gray-600 font-medium">Data e Hora:</span>
               <div className="text-right">
                 <p className="text-gray-900 font-semibold">{date.split("-").reverse().join("/")}</p>
-                <p className="text-gray-900 font-semibold">{time}</p>
+                <p className="text-gray-900 font-semibold">{time.slice(0, 5)}</p>
               </div>
             </div>
           </div>
