@@ -79,7 +79,7 @@ export default function MeusAgendamentosPage() {
       return
     }
 
-    fetchAndUpdateAppointments(userPhone!)
+    fetchAndUpdateAppointments()
   }, [])
 
   return (
