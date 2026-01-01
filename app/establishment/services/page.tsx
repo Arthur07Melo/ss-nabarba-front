@@ -17,6 +17,8 @@ import { Trash2, Plus, Clock, DollarSign } from "lucide-react"
 import { toast } from "sonner"
 import { ServiceFormModal } from "@/components/barber/service-form-modal"
 import { ServicesGridSkeleton } from "@/components/barber/services-grid-skeleton"
+import Cookies from "js-cookie"
+import { deleteServicesAsEstablishment, getServicesAsEstablishment } from "@/http/establishment/ScheduleSystemApi"
 
 interface Service {
   id: string
@@ -33,17 +35,36 @@ export default function ServicesPage() {
   const [serviceToDelete, setServiceToDelete] = useState<string | null>(null)
   const [editingService, setEditingService] = useState<Service | null>(null)
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setServices([
-        { id: "1", name: "Corte", duration: 30, price: 30 },
-        { id: "2", name: "Barba", duration: 15, price: 15 },
-        { id: "3", name: "Corte + Barba", duration: 45, price: 40 },
-      ])
-      setIsLoading(false)
-    }, 1000)
 
-    return () => clearTimeout(timer)
+  const fetchServicesAndSetStates = async () => {
+    const establishmentAccessToken = Cookies.get('establishmentAccessToken');
+    if (!establishmentAccessToken) {
+      console.error("No establishment access token found");
+      //TODO: IMPLEMENTAR PAGINA DE LOGIN E REDIRECIONAR
+      return;
+    }
+
+    try {
+      const response = await getServicesAsEstablishment(establishmentAccessToken);
+  
+      const formattedServices = response.data.map((service: any) => ({
+        id: service.id,
+        name: service.name,
+        duration: service.duration,
+        price: service.price,
+        description: service.description,
+      }));
+
+      setServices(formattedServices);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchServicesAndSetStates();
   }, [])
 
   const handleAddService = (newService: Omit<Service, "id">) => {
@@ -62,14 +83,15 @@ export default function ServicesPage() {
     setIsFormOpen(false)
   }
 
-  const handleEditService = (service: Service) => {
-    setEditingService(service)
-    setIsFormOpen(true)
-  }
+  // const handleEditService = (service: Service) => {
+  //   setEditingService(service)
+  //   setIsFormOpen(true)
+  // }
 
-  const handleDeleteService = () => {
+  const handleDeleteService = async () => {
     if (serviceToDelete) {
-      setServices(services.filter((s) => s.id !== serviceToDelete))
+      await deleteServicesAsEstablishment([serviceToDelete], Cookies.get('establishmentAccessToken') || '')
+      await fetchServicesAndSetStates();
       toast.success("Serviço deletado com sucesso!")
       setServiceToDelete(null)
     }
@@ -127,9 +149,9 @@ export default function ServicesPage() {
                       <Button
                         variant="outline"
                         className="flex-1 bg-transparent"
-                        onClick={() => handleEditService(service)}
+                        disabled
                       >
-                        Editar
+                        Editar (em desenvolvimento...)
                       </Button>
                       <Button variant="destructive" size="icon" onClick={() => setServiceToDelete(service.id)}>
                         <Trash2 size={18} />

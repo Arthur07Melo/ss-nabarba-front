@@ -43,3 +43,22 @@ export const deleteAppointment = (appointmentId: string, userPhone: string) => {
     }
   });
 }
+
+export const getServicesAsEstablishment = (establishmentAccessToken: string) => {
+  return api.get(`/api/service`, {
+    headers: {
+      'Authorization': establishmentAccessToken
+    }
+  });
+}
+
+export const deleteServicesAsEstablishment = (serviceIds: string[], establishmentAccessToken: string) => {
+  return api.delete(`/api/service`, {
+    headers: {
+      'Authorization': establishmentAccessToken
+    },
+    params: {
+      serviceId: serviceIds
+    }
+  });
+}
