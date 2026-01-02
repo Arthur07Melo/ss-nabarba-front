@@ -27,7 +27,7 @@ type params = {
   id: string
 }
 
-export default function Home() {
+export default function EstablishmentPage() {
   const [isLoadingEstablishment, setIsLoadingEstablishment] = useState(true)
   const [isLoadingServices, setIsLoadingServices] = useState(true)
 
@@ -48,8 +48,10 @@ export default function Home() {
 
 
   useEffect(() => {
+    if (!params?.id) return
+
     getEstablishmentServices(params.id)
-      .then(response => {
+      .then((response) => {
         const servicesResponse = response.data.services;
         const establishmentResponse = response.data.establishment;
 
@@ -64,20 +66,25 @@ export default function Home() {
           id: service.id,
           name: service.name,
           duration: `${service.durationInMinutes}min`,
-          price: service.price.toFixed(2),
+          price: Number(service.price).toFixed(2),
         }))
 
         updateEstablishmentData(formattedEstablishment)
         updateServicesData(formattedServices)
       })
-  }, [])
+      .catch((error) => {
+        console.error("Failed to fetch establishment data:", error)
+        setIsLoadingEstablishment(false)
+        setIsLoadingServices(false)
+      })
+  }, [params.id])
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="pb-8">
-        {isLoadingEstablishment ? <BarberInfoSkeleton /> : <BarberInfo establishmentData={establishmentData!} />}
-        {isLoadingServices ? <ServicesListSkeleton /> : <ServicesList services={servicesData!} />}
+        {isLoadingEstablishment ? <BarberInfoSkeleton /> : (establishmentData && <BarberInfo establishmentData={establishmentData} />)}
+        {isLoadingServices ? <ServicesListSkeleton /> : (servicesData && <ServicesList services={servicesData} />)}
       </main>
     </div>
   )

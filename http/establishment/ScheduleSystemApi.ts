@@ -62,3 +62,10 @@ export const deleteServicesAsEstablishment = (serviceIds: string[], establishmen
     }
   });
 }
+
+export const loginAsEstablishment = (email: string, password: string) => {
+  return api.post(`/api/establishment/login`, {
+    email,
+    password
+  });
+}

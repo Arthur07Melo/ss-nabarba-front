@@ -14,8 +14,6 @@ export async function GET(
       }
     })
 
-    console.log('Services fetched successfully:', response.data);
-
     return NextResponse.json(response.data);
   } catch (error) {
     console.error('Error fetching services:', error);
